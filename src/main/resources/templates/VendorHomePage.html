@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.com">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  <title>Sharing Economy Platform</title>
+  
+  <body>
+<div class="">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#">SEP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="vendorhomepage">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/">vendor logout</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="container">
+
+
+
+<div class="container-fluid">
+<div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Welcome, Vendor!</h1>
+      <p class="lead text-muted">As a Vendor You can Add and Update your Products, Services and Category List.</p>
+      <p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Products</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@fat">Add Services</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@getbootstrap">Update Category</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change the List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/createProduct}" method="post"  >  <!-- th:action="@{/createProduct}" method=post -->
+        
+    <div class="form-group">
+            <label for="message-text" class="col-form-label">Name of the product:</label>
+             <input type="text" class="form-control" id="recipient-name"  name="name">
+          </div>
+                 <div class="form-group">
+                    <label for="category">Select Category</label>
+                    <select class="form-control"  id="category"  name="categoryId">
+                        <option th:each="category: ${cat}"
+                                th:value="${category.id}"
+                                th:text="${category.categoryname}">
+                    </select>
+                </div>                
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> price:</label>
+            <input type="text" class="form-control" id="recipient-name"   name="price">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> Quantity:</label>
+            <input type="text" class="form-control" id="recipient-name"  name="weight">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> Location:</label>
+            <input type="text" class="form-control" id="recipient-name"   name="description">
+          </div>
+          <!-- <div class="form-group">
+                    <input type="file"  class="form-control" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
+                    <label class="custom-file-label" for="productImage">Choose file</label>
+               
+                <div class="form-group">
+                    <img src="#" id="imgPreview" height="100px" width="100px"   style="margin-top: 20px" alt=" ">
+                </div>
+                <input type="hidden" name="imageName" >
+                 </div> -->
+        
+                <button onclick="" class="btn btn-success">Save</button>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change the List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/createService}" method="post"  >  <!-- th:action="@{/createProduct}" method=post -->
+        
+    <div class="form-group">
+            <label for="message-text" class="col-form-label">Name of the service:</label>
+             <input type="text" class="form-control" id="recipient-name"  name="name">
+          </div>
+                 <div class="form-group">
+                    <label for="category">Select Category</label>
+                    <select class="form-control"  id="category"  name="categoryId">
+                        <option th:each="sercategory: ${sercat}"
+                                th:value="${sercategory.id}"
+                                th:text="${sercategory.servicecategoryname}">
+                    </select>
+                </div>                
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> price:</label>
+            <input type="text" class="form-control" id="recipient-name"   name="price">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> Quantity:</label>
+            <input type="text" class="form-control" id="recipient-name"  name="quantity">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> Location:</label>
+            <input type="text" class="form-control" id="recipient-name"   name="description">
+          </div>
+          <!-- <div class="form-group">
+                    <input type="file"  class="form-control" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
+                    <label class="custom-file-label" for="productImage">Choose file</label>
+               
+                <div class="form-group">
+                    <img src="#" id="imgPreview" height="100px" width="100px"   style="margin-top: 20px" alt=" ">
+                </div>
+                <input type="hidden" name="imageName" >
+                 </div> -->
+        
+                <button onclick="" class="btn btn-success">Save</button>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+    
+    </div>
+  </div>
+
+<p>Your Products Details</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Availability</th>
+      <th scope="col">Location</th>
+       <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="product: ${pro}">
+      <th th:text="${product.name}" scope="row"></th>
+      <td th:text="${product.price}"></td>
+      <td th:text="${product.weight}"></td>
+      <td th:text="${product.description}"></td>
+       <td><!-- <a class="btn btn-sm btn-primary" th:href="@{/adminhomepage/category/update/{id}(id=${category.id})}">Update</a> -->
+   <a class="btn btn-sm btn-danger" th:href="@{/vendorhomepage/product/delete/{id}(id=${product.id})}">Delete</a> 
+  </td> 
+    </tr>
+    <tr>
+      <th scope="row">Service B</th>
+      <td>200</td>
+      <td>4</td>
+      <td>Hyderabad</td>
+        <td><!-- <a class="btn btn-sm btn-primary" th:href="@{/adminhomepage/category/update/{id}(id=${category.id})}">Update</a> -->
+    <a class="btn btn-sm btn-danger" >Delete</a> 
+  </td> 
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+<p>Your Services Details</p>
+<table class="table table-striped">
+   <thead>
+    <tr>
+      <th scope="col">Service Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Availability</th>
+      <th scope="col">Location</th>
+       <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr th:each="service: ${ser}">
+      <th th:text="${service.name}" scope="row"></th>
+      <td th:text="${service.price}"></td>
+      <td th:text="${service.quantity}"></td>
+      <td th:text="${service.description}"></td>
+        <td><!-- <a class="btn btn-sm btn-primary" th:href="@{/adminhomepage/category/update/{id}(id=${category.id})}">Update</a> -->
+  <a class="btn btn-sm btn-danger" th:href="@{/vendorhomepage/service/delete/{id}(id=${service.id})}">Delete</a>
+  </td>  
+    </tr>
+
+    <tr>
+      <th scope="row">Service B</th>
+      <td>1000/-</td>
+      <td>2 days</td>
+      <td>Hyderabad</td>
+        <td><!-- <a class="btn btn-sm btn-primary" th:href="@{/adminhomepage/category/update/{id}(id=${category.id})}">Update</a> -->
+ <!--  <a class="btn btn-sm btn-danger" th:href="@{/vendorhomepage/product/delete/{id}(id=${product.id})}">Delete</a> -->
+  </td> 
+    </tr>
+  </tbody>
+  </tbody>
+</table>
+
+
+ </div>     
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
